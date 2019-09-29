@@ -5,37 +5,37 @@
 //  Created by Gaurish on 26/09/19.
 //  Copyright © 2019 GB. All rights reserved.
 //
-
+var counter1:Int = 0
 import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var segmentedControl: GBSegmentedControl!
-    @IBOutlet weak var segmentedSliderControl: GBSegmentedSliderControl!
-    
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var uiSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var gbSegmentedControl: GBSegmentedControl!
+    @IBOutlet weak var gbSegmentedSliderControl: GBSegmentedSliderControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func didChangeValue(_ sender: GBSegmentedControl) {
-        infoLabel.text = "Selected segment index : \(sender.selectedSegmentIndex)"
+ 
+    @IBAction func didChangeUISegmentedControlValue(_ sender: UISegmentedControl) {
+        changeSelection(index: sender.selectedSegmentIndex)
     }
     
-    @IBAction func didChangeControlValue(_ sender: GBSegmentedSliderControl) {
+    @IBAction func didChangeGBSegmentedControlValue(_ sender: GBSegmentedControl) {
+        changeSelection(index: sender.selectedSegmentIndex)
     }
     
-    
-    @IBAction func didTapButton(_ sender: UIButton) {
-        print(textField.text ?? 0)
-        segmentedControl.changeSelectedSegmentIndex = Int(textField.text!) ?? 0
-        segmentedSliderControl.changeSelectedSegmentIndex = Int(textField.text!) ?? 0
+    @IBAction func didChangeGBSegmentedSliderControlValue(_ sender: GBSegmentedSliderControl) {
+        changeSelection(index: sender.selectedSegmentIndex)
     }
     
-
+    func changeSelection(index:Int) {
+        uiSegmentedControl.selectedSegmentIndex = index
+        gbSegmentedControl.changeSelectedSegmentIndex = index
+        gbSegmentedSliderControl.changeSelectedSegmentIndex = index
+    }
 
 }
 

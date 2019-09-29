@@ -5,7 +5,7 @@
 //  Created by Gaurish on 26/09/19.
 //  Copyright © 2019 GB. All rights reserved.
 //
-
+var counter:Int = 0
 import UIKit
 
 @IBDesignable
@@ -63,7 +63,6 @@ class GBSegmentedControl: UIControl {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         updateView()
-        //        fatalError("init(coder:) has not been implemented")
     }
     
     func updateView() {
@@ -153,7 +152,6 @@ class GBSegmentedControl: UIControl {
                 })
             }
         }
-        sendActions(for: .valueChanged)
     }
     
     @objc func didTapButton(sender: UIButton) {

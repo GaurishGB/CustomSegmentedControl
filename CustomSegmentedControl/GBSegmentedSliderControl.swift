@@ -48,6 +48,12 @@ class GBSegmentedSliderControl: UIControl {
         }
     }
     
+    var segmentTitleFont: UIFont = UIFont.systemFont(ofSize: 17.0) {
+        didSet {
+            updateView()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         updateView()
@@ -56,7 +62,6 @@ class GBSegmentedSliderControl: UIControl {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         updateView()
-        //        fatalError("init(coder:) has not been implemented")
     }
     
     func updateView() {
@@ -74,6 +79,7 @@ class GBSegmentedSliderControl: UIControl {
             let button = UIButton.init(type: .system)
             button.setTitle(item, for: .normal)
             button.setTitleColor(unSelectedSegmentTextColor, for: .normal)
+            button.titleLabel?.font = segmentTitleFont
             button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
             buttonsArray.append(button)
         }
@@ -136,7 +142,6 @@ class GBSegmentedSliderControl: UIControl {
                 button.setTitleColor(selectedSegmentTextColor, for: .normal)
             }
         }
-        sendActions(for: .valueChanged)
     }
     
     @objc func buttonTapped(sender: UIButton) {
